@@ -1,0 +1,285 @@
+/* ===== 1. VARIABEL WARNA =====
+   Warna disimpan di satu tempat; ubah di sini, seluruh web ikut berubah.
+   Warna diambil dari fotomu: biru jas dan merah latar. Cara pakai: var(--nama) */
+:root {
+  --navy: #0b2a5b;       /* biru tua (warna jas) */
+  --navy-gelap: #071d42; /* biru lebih gelap untuk bagian kontak */
+  --merah: #d10000;      /* merah (warna latar foto) sebagai aksen */
+  --bg: #f4f6fb;         /* latar halaman */
+  --text: #1a2233;       /* teks utama */
+  --muted: #5b667a;      /* teks abu-abu */
+  --line: #dde2ee;       /* garis tipis */
+}
+
+/* ===== 2. PENGATURAN DASAR ===== */
+* {
+  margin: 0;               /* hapus jarak bawaan browser */
+  padding: 0;
+  box-sizing: border-box;  /* lebar elemen sudah termasuk padding, lebih mudah dihitung */
+}
+
+html {
+  scroll-behavior: smooth; /* klik menu lalu scroll halus */
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, sans-serif; /* jenis huruf (jika gagal, pakai berikutnya) */
+  font-size: 18px;
+  line-height: 1.7; /* jarak antar baris supaya enak dibaca */
+}
+
+/* ===== 3. CONTAINER =====
+   Membatasi lebar isi dan menaruhnya di tengah layar */
+.container {
+  max-width: 960px;  /* lebar maksimal isi */
+  margin: 0 auto;    /* kiri-kanan "auto" = otomatis ke tengah */
+  padding: 0 20px;   /* jarak aman di tepi layar HP */
+}
+
+/* ===== 4. NAVBAR ===== */
+.navbar {
+  position: sticky;  /* menempel saat halaman di-scroll */
+  top: 0;            /* menempel di tepi paling atas */
+  z-index: 10;       /* supaya tampil di atas elemen lain */
+  background: white;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.navbar .container {
+  display: flex;                   /* flex = susun anak-anaknya sejajar menyamping */
+  justify-content: space-between;  /* logo di kiri, menu di kanan */
+  align-items: center;             /* rata tengah secara vertikal */
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+  color: var(--navy);
+  text-decoration: none;  /* hilangkan garis bawah link */
+}
+
+.logo span {
+  color: var(--merah);    /* titik di logo berwarna merah */
+}
+
+.navbar ul {
+  list-style: none;  /* hilangkan titik di daftar */
+  display: flex;     /* menu berjejer menyamping */
+  gap: 24px;         /* jarak antar menu */
+}
+
+.navbar ul a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar ul a:hover {
+  color: var(--merah);  /* :hover = saat kursor di atas menu, warna berubah */
+}
+
+/* ===== 5. SECTION & JUDUL ===== */
+section {
+  padding: 70px 0;  /* jarak atas-bawah 70px, kiri-kanan 0 */
+}
+
+.putih {
+  background: white; /* bagian yang berlatar putih */
+}
+
+h2 {
+  font-size: 32px;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+
+h2::after {              /* ::after = menambah elemen hias setelah judul */
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: var(--merah);  /* garis merah kecil di bawah judul */
+  margin-top: 8px;
+}
+
+/* ===== 6. TOMBOL ===== */
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 8px 10px 0 0;   /* atas 8, kanan 10, bawah 0, kiri 0 */
+  transition: 0.2s;       /* perubahan saat hover jadi halus */
+}
+
+.btn:hover {
+  transform: translateY(-3px);  /* tombol naik sedikit saat disorot */
+}
+
+.btn-hitam {
+  background: white;
+  color: var(--navy);
+}
+
+.btn-garis {
+  border: 2px solid white;  /* tombol hanya garis tepi */
+  color: white;
+}
+
+/* ===== 7. HERO (perkenalan) ===== */
+.hero-section {
+  background: var(--navy);  /* latar biru tua satu lebar layar */
+  color: white;
+  padding: 90px 0;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;  /* teks di kiri, foto di kanan */
+  align-items: center;
+  gap: 40px;
+}
+
+.label {
+  display: inline-block;
+  background: var(--merah);
+  padding: 4px 14px;
+  border-radius: 20px;   /* sudut sangat bulat jadi seperti pil */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: 52px;
+  line-height: 1.15;
+  margin: 16px 0;        /* atas-bawah 16, kiri-kanan 0 */
+}
+
+.hero p {
+  color: #c9d6ee;        /* putih kebiruan supaya lembut */
+  max-width: 440px;      /* batasi lebar agar paragraf tidak terlalu panjang */
+}
+
+.foto {
+  width: 280px;
+  height: 350px;
+  object-fit: cover;     /* foto dipotong rapi, tidak gepeng */
+  border-radius: 16px;   /* sudut membulat */
+  border: 4px solid white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);  /* bayangan agar foto terlihat melayang */
+}
+
+/* ===== 8. SKILLS ===== */
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;  /* kalau tidak muat, turun ke baris berikutnya */
+  gap: 12px;
+}
+
+.skill-list li {
+  background: #e8eefb;
+  color: var(--navy);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+/* ===== 9. PROJECTS ===== */
+.project-list {
+  display: grid;                    /* grid = susun dalam kolom dan baris */
+  grid-template-columns: 1fr 1fr;   /* 2 kolom lebar sama */
+  gap: 24px;
+}
+
+.project {
+  background: white;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--merah);  /* garis merah di atas kartu */
+  border-radius: 12px;
+  padding: 28px;
+  transition: 0.2s;
+}
+
+.project:hover {
+  transform: translateY(-5px);                    /* kartu naik saat disorot */
+  box-shadow: 0 12px 24px rgba(11, 42, 91, 0.15); /* bayangan lembut */
+}
+
+.nomor {
+  color: var(--merah);
+  font-weight: bold;
+}
+
+.project h3 {
+  color: var(--navy);
+  margin: 4px 0 8px;
+}
+
+.project p {
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.project a {
+  color: var(--navy);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ===== 10. CONTACT ===== */
+#contact {
+  background: var(--navy-gelap);  /* #contact = elemen dengan id="contact" */
+  color: white;
+}
+
+#contact h2 {
+  color: white;  /* judul jadi putih karena latar gelap */
+}
+
+#contact .email {
+  margin-top: 20px;
+  color: #c9d6ee;
+}
+#contact .noHP {
+  margin-top: 20px;
+  color:#dde2ee
+}
+
+/* ===== 11. FOOTER ===== */
+footer {
+  padding: 20px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* ===== 12. RESPONSIF (tampilan layar HP) =====
+   Aturan di dalam @media hanya aktif jika lebar layar 700px ke bawah */
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column-reverse;  /* susun atas-bawah; foto naik ke atas teks */
+    align-items: flex-start;
+  }
+
+  .hero h1 {
+    font-size: 36px;       /* judul diperkecil */
+  }
+
+  .foto {
+    width: 220px;
+    height: 275px;
+  }
+
+  .project-list {
+    grid-template-columns: 1fr;  /* kartu jadi 1 kolom */
+  }
+
+  .navbar ul {
+    gap: 14px;             /* menu lebih rapat agar muat di HP */
+  }
+}
